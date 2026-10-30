@@ -341,7 +341,7 @@ const label = p => p.id === 'R' ? 'حضرت محمد مصطفےٰ ﷺ' : p.n;
 const rng = (a, b) => `\u2066${U(a)}–${U(b)}\u2069ء`;   // keep "1970–1990" left-to-right inside Urdu text
 function yrs(g) { const r = DATA.meta.genYears && DATA.meta.genYears[g]; if (!r) return ''; return r[0] === r[1] ? `${U(r[0])}ء` : rng(r[0], r[1]); }
 function yrMid(g) { const r = DATA.meta.genYears && DATA.meta.genYears[g]; if (!r) return ''; if (r[0] === r[1]) return `${U(r[0])}ء`;
-  const m = Math.round((r[0] + r[1]) / 20) * 10; return rng(m - 10, Math.min(m + 10, 2025)); }
+  const m = Math.round((r[0] + r[1]) / 20) * 10; return rng(m, Math.min(m + 20, 2025)); }
 function bornTxt(p) { if (p.d) return `پیدائش ${U(p.d)} کی دہائی`; const r = DATA.meta.genYears && DATA.meta.genYears[p.g]; if (!r) return ''; return r[0] === r[1] ? `پیدائش ${U(r[0])}ء` : `پیدائش تقریباً ${yrs(p.g)}`; }
 
 /* ---------- relationship ---------- */
