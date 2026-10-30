@@ -116,25 +116,46 @@ main { max-width: 980px; margin: 0 auto; padding-block: 18px 120px; padding-left
 .btn[disabled] { opacity: .6; cursor: wait; }
 .btn.gold { background: var(--gold); color: #1B1405; border-color: var(--gold); }
 
-.family { display: grid; gap: 10px; justify-items: center; }
+.hero .crumb { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; font-size: 14px; line-height: 1.9; position: relative; z-index: 1; opacity: .9; }
+.hero .crumb button { background: none; border: 0; color: var(--on-em); padding: 0; cursor: pointer; text-decoration: underline; text-decoration-color: rgba(212,170,79,.6); text-underline-offset: 6px; }
+.hero .crumb span { opacity: .6; }
+.hero .bin { font-size: 17px; opacity: .9; position: relative; z-index: 1; margin-top: -6px; }
+.sons { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
+.scard { display: grid; grid-template-columns: 1fr auto; align-items: center; text-align: right; gap: 0 10px; background: var(--bg); border: 1.5px solid var(--line); border-radius: 14px; padding: 6px 14px; cursor: pointer; width: 100%; }
+.scard:hover, .scard:focus-visible { border-color: var(--gold); background: var(--goldsoft); }
+.scard .sn { font-size: 19px; font-weight: 600; line-height: 2; min-width: 0; }
+.scard .sm { grid-column: 1; color: var(--muted); font-size: 13px; line-height: 1.7; }
+.scard .chev { grid-row: 1 / span 2; grid-column: 2; color: var(--gold); font-size: 26px; font-family: system-ui; line-height: 1; }
+.ladder { display: grid; justify-items: center; gap: 0; }
+.rung { display: grid; justify-items: center; gap: 0; min-width: 62%; max-width: 100%; background: var(--paper); border: 1.5px solid var(--line); border-radius: 14px; padding: 2px 16px 6px; cursor: pointer; text-align: center; }
+.rung:hover { border-color: var(--gold); }
+.rung .rl { font-size: 12px; color: var(--muted); line-height: 1.8; }
+.rung .rn { font-size: 18px; line-height: 1.9; }
+.rung.me { border: 2.5px solid var(--gold); background: var(--goldsoft); cursor: default; }
+.rung.me .rn { font-size: 21px; font-weight: 700; }
+.ladder .conn { height: 14px; }
+.sibs { margin-top: 12px; display: grid; justify-items: center; gap: 4px; }
 .fam-row { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
 .pbox { border: 1.5px solid var(--line); background: var(--paper); border-radius: 12px; padding: 0 14px; cursor: pointer; line-height: 2.2; font-size: 17px; text-align: center; }
 .pbox:hover { border-color: var(--gold); }
-.pbox.me { border: 2.5px solid var(--gold); background: var(--goldsoft); font-weight: 700; font-size: 19px; cursor: default; }
-.pbox.sib { color: var(--muted); font-size: 15px; }
+.pbox.sib { color: var(--ink); font-size: 16px; }
 .conn { width: 2px; height: 16px; background: var(--muted); opacity: .5; }
 .lbl { color: var(--muted); font-size: 13px; line-height: 1.6; }
 
-.lineage { list-style: none; margin: 0; padding: 0; display: grid; }
-.lineage li { display: grid; grid-template-columns: 54px 1fr; align-items: center; gap: 10px; position: relative; }
-.lineage li::before { content: ""; position: absolute; right: 26px; top: 0; bottom: 0; width: 2px; background: var(--line); }
+.lineage { list-style: none; margin: 4px 0 0; padding: 0; display: grid; }
+.lineage li { display: grid; grid-template-columns: 50px 1fr; align-items: center; gap: 8px; position: relative; min-height: 52px; }
+.lineage li::before { content: ""; position: absolute; right: 24px; top: 0; bottom: 0; width: 2px; background: var(--line); }
 .lineage li:first-child::before { top: 50%; } .lineage li:last-child::before { bottom: 50%; }
 .lineage .g { position: relative; z-index: 1; justify-self: center; width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: var(--paper); border: 2px solid var(--gold); color: var(--em2); font-size: 15px; line-height: 1; font-variant-numeric: tabular-nums; }
-.lineage button.nmb { text-align: right; background: none; border: 0; padding: 2px 0; cursor: pointer; font-size: 17px; line-height: 2; }
-.lineage button.nmb:hover { color: var(--em2); text-decoration: underline; text-decoration-color: var(--gold); }
+.lrow { display: grid; text-align: right; background: none; border: 0; border-radius: 10px; padding: 0 8px; cursor: pointer; width: 100%; }
+.lrow:hover { background: var(--emsoft); }
+.lrow .ln { font-size: 18px; line-height: 1.9; }
+.lrow .lm { display: flex; gap: 8px; color: var(--muted); font-size: 13px; line-height: 1.5; padding-bottom: 4px; }
+.lrow .lm b { color: var(--gold); font-weight: 600; }
 .lineage li.cur .g { background: var(--gold); color: #1B1405; }
-.lineage li.cur .nmb { font-weight: 700; }
-.lineage li.gap .nmb { color: var(--em2); font-size: 15px; }
+.lineage li.cur .ln { font-weight: 700; }
+.lineage li.cur .lrow { background: var(--goldsoft); }
+.lrow.more { color: var(--em2); font-size: 15px; line-height: 2.4; }
 .rel { color: var(--muted); font-size: 13px; margin-inline-start: 8px; }
 
 .note { background: var(--goldsoft); border-radius: 12px; padding: 6px 14px; font-size: 15px; line-height: 2; }
@@ -154,6 +175,36 @@ main { max-width: 980px; margin: 0 auto; padding-block: 18px 120px; padding-left
 .tn.hl { background: var(--goldsoft); }
 .tn.mark { outline: 2px solid var(--gold); }
 .cnt { color: var(--muted); font-size: 12px; font-family: system-ui; font-variant-numeric: tabular-nums; }
+
+/* ---------- visual tree ---------- */
+.seg.mode { display: inline-flex; gap: 0; border: 1.5px solid var(--line); border-radius: 999px; overflow: hidden; }
+.seg.mode button { border: 0; background: var(--paper); padding: 0 16px; line-height: 2.2; cursor: pointer; font-size: 15px; }
+.seg.mode button[aria-selected="true"] { background: var(--em2); color: #fff; }
+.map { position: relative; height: min(72vh, 640px); margin-top: 8px; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; touch-action: none; user-select: none; -webkit-user-select: none;
+  background: var(--bg); background-image: radial-gradient(circle at 10px 10px, var(--line) 1.2px, transparent 1.6px); background-size: 20px 20px; }
+.map svg { width: 100%; height: 100%; display: block; cursor: grab; }
+.map svg:active { cursor: grabbing; }
+.map .ml { fill: none; stroke: var(--muted); stroke-opacity: .55; stroke-width: 2; }
+.map .mn { cursor: pointer; }
+.map .mn > rect { fill: var(--paper); stroke: var(--line); stroke-width: 1.5; }
+.map .mn > text { font-family: var(--urdu); font-size: 17px; fill: var(--ink); text-anchor: middle; direction: rtl; }
+.map .mn.hl > rect { fill: var(--goldsoft); stroke: var(--gold); }
+.map .mn.focus > rect { stroke: var(--gold); stroke-width: 4; }
+.map .mn.sel > rect { stroke: var(--em2); stroke-width: 4; }
+.map .more { fill: var(--em2); }
+.map .mt { font-family: system-ui; font-size: 12px; fill: #fff; text-anchor: middle; direction: ltr; unicode-bidi: plaintext; }
+.mapctl { position: absolute; top: 10px; left: 10px; display: grid; gap: 6px; }
+.mapctl button { width: 40px; height: 40px; border-radius: 12px; border: 1px solid var(--line); background: var(--paper); box-shadow: var(--shadow); font-size: 20px; line-height: 1; cursor: pointer; font-family: system-ui; color: var(--ink); }
+.mapinfo { position: absolute; inset: auto 10px 10px 10px; background: var(--paper); border: 1.5px solid var(--gold); border-radius: 14px; padding: 6px 12px 10px; box-shadow: var(--shadow); display: grid; gap: 4px; }
+.mapinfo b { font-size: 19px; } .mapinfo small { color: var(--muted); font-size: 13px; margin-inline-start: 10px; }
+.mapinfo .btn { line-height: 2.1; }
+
+.sub { border: 1px solid var(--line); border-radius: 14px; padding: 8px 12px; margin-top: 10px; display: grid; gap: 6px; background: var(--bg); }
+.subh { display: flex; justify-content: space-between; align-items: center; } .subh small { color: var(--muted); font-size: 12px; font-family: system-ui; }
+.subt { font-size: 16px; } .subt small { color: var(--muted); font-size: 13px; }
+.subr { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.subn { flex: 1 1 140px; min-width: 0; border: 1.5px solid var(--line); background: var(--paper); border-radius: 10px; padding: 0 10px; line-height: 2.1; font-size: 17px; }
+.subf { font-size: 14px; color: var(--muted); }
 
 /* ---------- forms ---------- */
 .form { display: grid; gap: 12px; }
@@ -287,8 +338,10 @@ function ancestors(id) { const a = []; let p = P[id]; while (p) { a.push(p.id); 
 function chainText(p, n = 3) { const a = []; let f = P[p.f]; while (f && a.length < n) { a.push(f.id === 'R' ? 'حضور ﷺ' : f.n); f = P[f.f]; } return a.length ? 'بن ' + a.join(' ← ') : ''; }
 function descCount(id) { let c = 0, st = [...P[id].c]; while (st.length) { const x = st.pop(); c++; st.push(...P[x].c); } return c; }
 const label = p => p.id === 'R' ? 'حضرت محمد مصطفےٰ ﷺ' : p.n;
-function yrs(g) { const r = DATA.meta.genYears && DATA.meta.genYears[g]; if (!r) return ''; return r[0] === r[1] ? `${U(r[0])}ء` : `${U(r[0])}–${U(r[1])}ء`; }
-function yrMid(g) { const r = DATA.meta.genYears && DATA.meta.genYears[g]; return r ? (r[0] === r[1] ? `${U(r[0])}ء` : `~${U(Math.round((r[0] + r[1]) / 20) * 10)}ء`) : ''; }
+const rng = (a, b) => `\u2066${U(a)}–${U(b)}\u2069ء`;   // keep "1970–1990" left-to-right inside Urdu text
+function yrs(g) { const r = DATA.meta.genYears && DATA.meta.genYears[g]; if (!r) return ''; return r[0] === r[1] ? `${U(r[0])}ء` : rng(r[0], r[1]); }
+function yrMid(g) { const r = DATA.meta.genYears && DATA.meta.genYears[g]; if (!r) return ''; if (r[0] === r[1]) return `${U(r[0])}ء`;
+  const m = Math.round((r[0] + r[1]) / 20) * 10; return rng(m - 10, Math.min(m + 10, 2025)); }
 function bornTxt(p) { if (p.d) return `پیدائش ${U(p.d)} کی دہائی`; const r = DATA.meta.genYears && DATA.meta.genYears[p.g]; if (!r) return ''; return r[0] === r[1] ? `پیدائش ${U(r[0])}ء` : `پیدائش تقریباً ${yrs(p.g)}`; }
 
 /* ---------- relationship ---------- */
@@ -378,55 +431,74 @@ function footer() {
 function viewPerson(id) {
   const p = P[id]; if (!p) return viewHome();
   setNav('');
-  const f = P[p.f], gf = f && P[f.f];
+  const f = P[p.f];
   const sibs = f ? f.c.filter(x => x !== id) : [];
-  const anc = ancestors(id).reverse();
+  const anc = ancestors(id).reverse();            // R ... p
   const meId = store('shajra.me');
+  const up = [];                                   // nearest ancestors, father first
+  { let a = P[p.f]; while (a && up.length < 3) { up.push(a); a = P[a.f]; } }
+  const yearOf = a => a.d ? `${U(a.d)}ء کی دہائی` : yrMid(a.g);
+  const linRow = (aid, i) => { const a = P[aid], k = anc.length - 1 - i;
+    return `<li class="${aid === id ? 'cur' : ''}"><span class="g">${U(a.g)}</span><button class="lrow" type="button" data-go="${aid}"><span class="ln">${esc(label(a))}</span><span class="lm">${k >= 1 && k <= 5 ? `<b>${upWord(k)}</b>` : ''}<span>${yearOf(a)}</span></span></button></li>`; };
   let lin = '';
   const show = anc.length > 14 ? new Set([...anc.slice(0, 3), ...anc.slice(-9)]) : new Set(anc);
   let gapDone = false;
   anc.forEach((aid, i) => {
-    if (!show.has(aid)) { if (!gapDone) { lin += `<li class="gap"><span class="g">⋮</span><button class="nmb" type="button" id="expandLin">درمیان کی ${U(anc.length - show.size)} پشتیں دکھائیں</button></li>`; gapDone = true; } return; }
-    const a = P[aid], up = anc.length - 1 - i;
-    lin += `<li class="${aid === id ? 'cur' : ''}"><span class="g">${U(a.g)}</span><span><button class="nmb" type="button" data-go="${aid}">${esc(label(a))}</button>${up >= 1 && up <= 4 ? `<span class="rel">${upWord(up)}</span>` : ''}<span class="rel">${a.d ? U(a.d) + 'ء کی دہائی' : yrMid(a.g)}</span></span></li>`;
+    if (!show.has(aid)) { if (!gapDone) { lin += `<li class="gap"><span class="g">⋮</span><button class="lrow more" type="button" id="expandLin">درمیان کی ${U(anc.length - show.size)} پشتیں دکھائیں</button></li>`; gapDone = true; } return; }
+    lin += linRow(aid, i);
   });
+  const sonCard = c => { const q = P[c], n = q.c.length;
+    return `<button class="scard" type="button" data-go="${c}"><span class="sn">${esc(q.n)}</span><span class="sm">${n ? `${U(n)} بیٹے` : 'آگے اولاد درج نہیں'} · ${q.d ? U(q.d) + 'ء کی دہائی' : yrMid(q.g)}</span><span class="chev" aria-hidden="true">‹</span></button>`; };
   app.innerHTML = `
     <section class="hero">
+      ${f ? `<div class="crumb">${up.slice().reverse().map(a => `<button type="button" data-go="${a.id}">${esc(label(a))}</button>`).join('<span>›</span>')}</div>` : ''}
       <div class="nm">${esc(label(p))}</div>
-      <div class="meta"><span class="chip gold">پشت ${U(p.g)}</span><span class="chip">${bornTxt(p)}</span>${p.isNew ? '<span class="chip gold">نیا اندراج</span>' : ''}${p.s ? `<span class="chip">حصہ ${U(p.s)}</span>` : ''}${p.ref ? `<span class="chip">پوسٹر پر خانہ ${esc(p.ref)}</span>` : ''}${p.tag ? `<span class="chip">${esc(p.tag)}</span>` : ''}${p.c.length ? `<span class="chip">${U(p.c.length)} بیٹے • ${U(descCount(id))} کل اولاد</span>` : ''}</div>
+      ${f ? `<div class="bin">ابنِ ${esc(label(f))}</div>` : ''}
+      <div class="meta"><span class="chip gold">پشت ${U(p.g)}</span><span class="chip">${bornTxt(p)}</span>${p.isNew ? '<span class="chip gold">نیا اندراج</span>' : ''}${p.s ? `<span class="chip">حصہ ${U(p.s)}</span>` : ''}${p.ref ? `<span class="chip">پوسٹر پر خانہ ${esc(p.ref)}</span>` : ''}${p.tag ? `<span class="chip">${esc(p.tag)}</span>` : ''}${p.c.length ? `<span class="chip">${U(descCount(id))} کل اولاد</span>` : ''}</div>
     </section>
     <div class="actions">
-      <button class="btn primary" type="button" data-tree="${id}">شجرے میں دیکھیں</button>
+      <button class="btn primary" type="button" id="shareBtn">شیئر کریں</button>
+      <button class="btn" type="button" data-tree="${id}">شجرے میں دیکھیں</button>
       <button class="btn" type="button" id="relBtn">رشتہ معلوم کریں</button>
       <button class="btn" type="button" id="meBtn">${meId === id ? '✓ یہ میں ہوں' : 'یہ میں ہوں'}</button>
-      <button class="btn" type="button" id="shareBtn">لنک کاپی کریں</button>
       <a class="btn gold" href="#suggest" id="fixBtn">اولاد شامل کریں / اصلاح</a>
     </div>
     ${p.chk ? `<p class="note warn">اس نام کی تحریر اصل شجرہ کی تصویر میں واضح نہیں تھی۔ اگر ہجے درست نہیں تو «اصلاح» میں بتائیں۔</p>` : ''}
     ${p.note ? `<p class="note">${esc(p.note)}</p>` : ''}
     ${p.fn ? `<p class="note">حاشیہ ${U(p.fn)}: ${esc(p.fnt)}</p>` : ''}
     ${p.spouse ? `<p class="note">زوج: ${esc(p.spouse)}</p>` : ''}${p.mother ? `<p class="note">والدہ: ${esc(p.mother)}</p>` : ''}
+    <section class="card"><h2>${p.c.length ? `بیٹے (${U(p.c.length)})` : 'بیٹے'}</h2>
+      ${p.c.length ? `<div class="sons">${p.c.map(sonCard).join('')}</div>` : `<p class="hint">اس شجرہ میں آگے اولاد درج نہیں۔ اگر بیٹے ہیں تو <a href="#suggest" id="addKids">یہاں شامل کریں</a>۔</p>`}
+    </section>
     <div class="grid2">
       <section class="card"><h2>خاندان</h2>
-        <div class="family">
-          ${gf ? `<span class="lbl">دادا</span><button class="pbox" type="button" data-go="${gf.id}">${esc(label(gf))}</button><span class="conn"></span>` : ''}
-          ${f ? `<span class="lbl">والد</span><button class="pbox" type="button" data-go="${f.id}">${esc(label(f))}</button><span class="conn"></span>` : ''}
-          <div class="fam-row"><span class="pbox me">${esc(label(p))}</span>${sibs.map(s => `<button class="pbox sib" type="button" data-go="${s}">${esc(P[s].n)}</button>`).join('')}</div>
-          ${sibs.length ? `<span class="lbl">ساتھ میں بھائی</span>` : ''}
-          ${p.c.length ? `<span class="conn"></span><span class="lbl">بیٹے</span><div class="fam-row">${p.c.map(c => `<button class="pbox" type="button" data-go="${c}">${esc(P[c].n)}</button>`).join('')}</div>` : `<span class="lbl">اس شجرہ میں آگے اولاد درج نہیں</span>`}
-        </div></section>
-      <section class="card"><h2>سلسلۂ نسب</h2><p class="hint">ہر نام کے ساتھ اندازاً سالِ پیدائش۔ <a href="#pusht">یہ اندازہ کیسے لگایا گیا؟</a></p><ol class="lineage" id="lin">${lin}</ol></section>
+        <div class="ladder">
+          ${up.slice().reverse().map((a, i, arr) => `<button class="rung" type="button" data-go="${a.id}"><span class="rl">${upWord(arr.length - i)}</span><span class="rn">${esc(label(a))}</span></button><span class="conn"></span>`).join('')}
+          <div class="rung me"><span class="rl">${meId === id ? 'آپ' : 'یہ'}</span><span class="rn">${esc(label(p))}</span></div>
+        </div>
+        ${sibs.length ? `<div class="sibs"><span class="lbl">بھائی</span><div class="fam-row">${sibs.map(s => `<button class="pbox sib" type="button" data-go="${s}">${esc(P[s].n)}</button>`).join('')}</div></div>` : ''}
+      </section>
+      <section class="card"><h2>سلسلۂ نسب</h2><p class="hint">حضور اکرم ﷺ سے ${esc(label(p))} تک ${U(anc.length - 1)} پشتیں، ہر نام کے ساتھ اندازاً سالِ پیدائش۔ <a href="#pusht">یہ اندازہ کیسے لگایا گیا؟</a></p><ol class="lineage" id="lin">${lin}</ol></section>
     </div>
     ${footer()}`;
-  document.getElementById('expandLin')?.addEventListener('click', () => {
-    document.getElementById('lin').innerHTML = anc.map((aid, i) => { const a = P[aid], up = anc.length - 1 - i;
-      return `<li class="${aid === id ? 'cur' : ''}"><span class="g">${U(a.g)}</span><span><button class="nmb" type="button" data-go="${aid}">${esc(label(a))}</button>${up >= 1 && up <= 4 ? `<span class="rel">${upWord(up)}</span>` : ''}<span class="rel">${a.d ? U(a.d) + 'ء کی دہائی' : yrMid(a.g)}</span></span></li>`; }).join('');
-  });
+  document.getElementById('expandLin')?.addEventListener('click', () => { document.getElementById('lin').innerHTML = anc.map(linRow).join(''); });
   document.getElementById('meBtn').onclick = () => { store('shajra.me', id); toast('محفوظ ہو گیا: «رشتہ» میں آپ کا نام پہلے سے بھرا ہوگا'); viewPerson(id); };
   document.getElementById('relBtn').onclick = () => { store('shajra.relB', id); go('relation'); };
   document.getElementById('fixBtn').onclick = () => store('shajra.target', id);
-  document.getElementById('shareBtn').onclick = e => copy(location.href.split('#')[0] + '#' + id, e.target);
+  document.getElementById('addKids')?.addEventListener('click', () => store('shajra.target', id));
+  document.getElementById('shareBtn').onclick = e => sharePerson(p, e.target);
   window.scrollTo({ top: 0 });
+}
+
+function shareURL(p) {
+  const base = location.href.split('#')[0].replace(/index\.html$/, '');
+  return p.isNew ? base + '#' + p.id : base + 'p/' + p.id + '.html';
+}
+async function sharePerson(p, btn) {
+  const url = shareURL(p), f = P[p.f];
+  const text = `${label(p)}${f ? ' ابنِ ' + label(f) : ''} — شجرۂ طیبہ سادات گیلانی`;
+  if (navigator.share) { try { await navigator.share({ title: text, text, url }); return; } catch (e) { if (e && e.name === 'AbortError') return; } }
+  copy(url, btn);
 }
 
 function viewTree(startId) {
@@ -434,6 +506,7 @@ function viewTree(startId) {
   const start = startId && P[startId] ? startId : (store('shajra.treeRoot') || DATTA);
   const focus = startId && P[startId] ? startId : null;
   const rootId = focus ? (focus === 'R' || focus === DATTA || ['p244','p251','p281','p289','p280'].includes(focus) ? focus : DATTA) : start;
+  let mode = store('shajra.treeMode') || 'map';
   const openSet = new Set();
   if (focus) ancestors(focus).forEach(a => openSet.add(a));
   const isUnder = (x, r) => ancestors(x).includes(r);
@@ -447,10 +520,16 @@ function viewTree(startId) {
           <option value="p270">سید وزیر الدین شاہ (داتا)</option><option value="R">حضور اکرم ﷺ سے مکمل</option>
           <option value="p244">حاجی سید فقیر شاہ</option><option value="p281">حاجی سید رسول شاہ</option><option value="p280">سید سخی نادر شاہ</option><option value="p251">حضرت شاہ</option><option value="p289">شیر شاہ</option>
         </select>
-        <button class="btn" type="button" id="expAll">سب کھولیں</button><button class="btn" type="button" id="colAll">سب بند کریں</button>
+        <div class="seg mode" role="tablist"><button type="button" data-mode="map" aria-selected="${mode === 'map'}">نقشہ</button><button type="button" data-mode="list" aria-selected="${mode === 'list'}">فہرست</button></div>
+        <span class="listonly" ${mode === 'map' ? 'hidden' : ''}><button class="btn" type="button" id="expAll">سب کھولیں</button> <button class="btn" type="button" id="colAll">سب بند کریں</button></span>
       </div>
-      <p class="hint">＋ دبا کر بیٹے دیکھیں۔ کسی نام پر دبائیں تو اس کا خاندان اور سلسلۂ نسب کھلے گا۔ بڑا بیٹا اوپر ہے۔</p>
-      <ul class="tree" id="tree"></ul>
+      <div ${mode === 'map' ? 'hidden' : ''} id="listBox"><p class="hint">＋ دبا کر بیٹے دیکھیں۔ کسی نام پر دبائیں تو اس کا خاندان اور سلسلۂ نسب کھلے گا۔ بڑا بیٹا اوپر ہے۔</p>
+      <ul class="tree" id="tree"></ul></div>
+      <div ${mode === 'map' ? '' : 'hidden'} id="mapBox"><p class="hint">انگلی سے کھسکائیں، دو انگلیوں سے بڑا چھوٹا کریں۔ سبز «+» پر دبائیں تو آگے کی نسل کھلے گی؛ نام پر دبائیں تو اس کے اختیارات۔ بڑا بیٹا دائیں جانب ہے۔</p>
+        <div class="map" id="map"><svg id="mapSvg" xmlns="http://www.w3.org/2000/svg"><g id="vp"></g></svg>
+          <div class="mapctl"><button type="button" id="zIn" aria-label="بڑا کریں">+</button><button type="button" id="zOut" aria-label="چھوٹا کریں">−</button><button type="button" id="zFit" aria-label="پورا دکھائیں">⤢</button><button type="button" id="zUp" aria-label="ایک پشت اوپر">↑</button></div>
+          <div class="mapinfo" id="mapInfo" hidden></div>
+        </div></div>
     </section>${footer()}`;
   const sel = document.getElementById('treeRoot'); sel.value = ['R','p270','p244','p281','p280','p251','p289'].includes(actualRoot) ? actualRoot : 'p270';
   const tree = document.getElementById('tree');
@@ -470,7 +549,117 @@ function viewTree(startId) {
   sel.onchange = () => { store('shajra.treeRoot', sel.value); location.hash = 'tree'; viewTree(); };
   document.getElementById('expAll').onclick = () => { const st = [actualRoot]; while (st.length) { const x = st.pop(); openSet.add(x); st.push(...P[x].c); } draw(); };
   document.getElementById('colAll').onclick = () => { openSet.clear(); openSet.add(actualRoot); draw(); };
-  if (focus) setTimeout(() => tree.querySelector('.mark')?.scrollIntoView({ block: 'center', behavior: 'smooth' }), 50);
+  if (focus && mode === 'list') setTimeout(() => tree.querySelector('.mark')?.scrollIntoView({ block: 'center', behavior: 'smooth' }), 50);
+  let mapRoot = focus ? (P[P[focus].f] && P[P[P[focus].f].f] ? P[P[focus].f].f : (P[focus].f || focus)) : actualRoot;
+  const map = treeMap(document.getElementById('map'), focus);
+  const showMap = () => map.render(mapRoot);
+  document.querySelectorAll('.mode button').forEach(b => b.onclick = () => {
+    mode = b.dataset.mode; store('shajra.treeMode', mode);
+    document.querySelectorAll('.mode button').forEach(x => x.setAttribute('aria-selected', x === b));
+    document.getElementById('mapBox').hidden = mode !== 'map'; document.getElementById('listBox').hidden = mode === 'map';
+    document.querySelector('.listonly').hidden = mode === 'map';
+    if (mode === 'map') showMap(); else if (focus) tree.querySelector('.mark')?.scrollIntoView({ block: 'center' });
+  });
+  map.onRoot = r => { mapRoot = r; };
+  if (mode === 'map') showMap();
+}
+
+/* ---------- visual tree (pan / pinch-zoom SVG) ---------- */
+function treeMap(box, focus) {
+  const svg = box.querySelector('svg'), vp = svg.querySelector('#vp'), info = box.querySelector('#mapInfo');
+  let DEPTH = 4; const BH = 46, VG = 96, HG = 14;
+  const cv = document.createElement('canvas').getContext('2d');
+  const tw = (t, sz) => { cv.font = `${sz}px JN, "Noto Nastaliq Urdu", serif`; return cv.measureText(t).width; };
+  let T = { x: 0, y: 0, k: 1 }, root = null, nodes = {}, sel = null, api = { onRoot: null };
+  const apply = () => vp.setAttribute('transform', `translate(${T.x},${T.y}) scale(${T.k})`);
+  function layout(r) {
+    nodes = {};
+    const SG = 28;   // vertical gap between stacked sons
+    const mk = (id, d) => { const p = P[id], w = Math.max(70, tw(label(p), 17) + 30);
+      const kids = d < DEPTH ? p.c.map(c => mk(c, d + 1)) : [];
+      const stack = kids.length > 1 && kids.every(k => !k.kids.length);   // sons with nothing shown below: stack in a column
+      const cw = stack ? Math.max(...kids.map(k => k.w)) + 22 : kids.reduce((a, k) => a + k.span, 0) + HG * Math.max(0, kids.length - 1);
+      const n = { id, w, d, kids, stack, span: Math.max(w, cw), cw, more: d >= DEPTH ? descCount(id) : 0 }; nodes[id] = n; return n; };
+    const place = (n, left, y) => { n.y = y;
+      if (n.stack) { n.cx = left + n.span / 2; n.spine = n.cx + n.cw / 2 - 4;
+        n.kids.forEach((k, j) => { k.y = y + VG + j * (BH + SG); k.cx = n.spine - 18 - k.w / 2; }); }
+      else if (n.kids.length) { let x = left + n.span - (n.span - n.cw) / 2;   // eldest on the right
+        n.kids.forEach(k => { place(k, x - k.span, y + VG); x -= k.span + HG; });
+        n.cx = (n.kids[0].cx + n.kids[n.kids.length - 1].cx) / 2; }
+      else n.cx = left + n.span / 2; };
+    let top;
+    for (DEPTH = 4; DEPTH >= 1; DEPTH--) { nodes = {}; top = mk(r, 0); if (top.span * 0.5 <= Math.max(box.clientWidth, 320) * 3) break; }
+    if (DEPTH < 1) { DEPTH = 1; nodes = {}; top = mk(r, 0); }
+    place(top, 0, 0); return top;
+  }
+  function draw(top) {
+    const e = [], b = [];
+    Object.values(nodes).forEach(n => {
+      const p = P[n.id];
+      if (n.stack) { const my = n.y + BH + (VG - BH) / 2, last = n.kids[n.kids.length - 1];
+        e.push(`M${n.cx},${n.y + BH}V${my}H${n.spine}V${last.y + BH / 2}`);
+        n.kids.forEach(k => e.push(`M${n.spine},${k.y + BH / 2}H${k.cx + k.w / 2}`)); }
+      else if (n.kids.length) { const my = n.y + BH + (VG - BH) / 2;
+        e.push(`M${n.cx},${n.y + BH}V${my}`);
+        const xs = n.kids.map(k => k.cx); e.push(`M${Math.min(...xs)},${my}H${Math.max(...xs)}`);
+        n.kids.forEach(k => e.push(`M${k.cx},${my}V${k.y}`)); }
+      const cls = ['mn', p.hl ? 'hl' : '', n.id === focus ? 'focus' : '', n.id === sel ? 'sel' : ''].join(' ');
+      b.push(`<g class="${cls}" data-id="${n.id}" transform="translate(${n.cx - n.w / 2},${n.y})"><rect width="${n.w}" height="${BH}" rx="12"/><text x="${n.w / 2}" y="${BH / 2 + 7}">${esc(label(p))}</text>${n.more ? `<g class="mb" transform="translate(${n.w / 2 - 22},${BH - 4})"><rect class="more" width="44" height="22" rx="11"/><text class="mt" x="22" y="16">+${n.more}</text></g>` : ''}</g>`);
+    });
+    vp.innerHTML = `<path class="ml" d="${e.join('')}"/>${b.join('')}`;
+  }
+  function fit(centerId) {
+    const W = box.clientWidth, H = box.clientHeight, top = nodes[root];
+    const totalH = Math.max(...Object.values(nodes).map(n => n.y)) + BH + 34;
+    T.k = Math.max(0.5, Math.min(1, (W - 24) / top.span));
+    box.style.height = Math.round(Math.max(300, Math.min(innerHeight * 0.72, totalH * T.k + 70))) + 'px';
+    const c = nodes[centerId && nodes[centerId] ? centerId : root];
+    if (c && top.span * T.k > W) { T.x = W / 2 - c.cx * T.k; T.y = Math.min(16, H / 2 - c.y * T.k); }
+    else { T.x = (W - top.span * T.k) / 2; T.y = 16; }
+    apply();
+  }
+  function select(id) {
+    sel = id; vp.querySelectorAll('.mn.sel').forEach(g => g.classList.remove('sel'));
+    vp.querySelector(`.mn[data-id="${id}"]`)?.classList.add('sel');
+    const p = P[id], n = p.c.length;
+    info.hidden = false;
+    info.innerHTML = `<div><b>${esc(label(p))}</b><small>پشت ${U(p.g)}${n ? ` · ${U(n)} بیٹے` : ''}</small></div>
+      <div class="actions">${id !== root && n ? `<button class="btn primary" type="button" id="mHere">یہاں سے دیکھیں</button>` : ''}<button class="btn" type="button" data-go="${id}">تفصیل</button><button class="btn" type="button" id="mClose" aria-label="بند کریں">✕</button></div>`;
+    document.getElementById('mHere')?.addEventListener('click', () => render(id, id));
+    document.getElementById('mClose').onclick = () => { info.hidden = true; sel = null; vp.querySelectorAll('.mn.sel').forEach(g => g.classList.remove('sel')); };
+  }
+  function render(r, centerId) {
+    root = r; if (api.onRoot) api.onRoot(r); info.hidden = true; sel = null;
+    const go_ = () => { draw(layout(r)); fit(centerId || focus || r); };
+    document.fonts && document.fonts.status !== 'loaded' ? document.fonts.ready.then(go_) : go_();
+  }
+  // gestures
+  const pts = new Map(); let start = null, moved = false;
+  const zoomAt = (k, cx, cy) => { k = Math.max(0.2, Math.min(2.5, k)); T.x = cx - (cx - T.x) * (k / T.k); T.y = cy - (cy - T.y) * (k / T.k); T.k = k; apply(); };
+  const rel = e => { const r = box.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; };
+  svg.addEventListener('pointerdown', e => { svg.setPointerCapture(e.pointerId); pts.set(e.pointerId, rel(e)); moved = false;
+    start = { T: { ...T }, pts: new Map([...pts].map(([k, v]) => [k, [...v]])) }; });
+  svg.addEventListener('pointermove', e => { if (!pts.has(e.pointerId)) return; pts.set(e.pointerId, rel(e));
+    const a = [...pts.values()], s0 = [...start.pts.values()];
+    if (a.length === 1 && s0.length === 1) { const dx = a[0][0] - s0[0][0], dy = a[0][1] - s0[0][1];
+      if (Math.abs(dx) + Math.abs(dy) > 6) moved = true; T.x = start.T.x + dx; T.y = start.T.y + dy; apply(); }
+    else if (a.length === 2 && s0.length === 2) { moved = true;
+      const d = (p, q) => Math.hypot(p[0] - q[0], p[1] - q[1]); const m = [(a[0][0] + a[1][0]) / 2, (a[0][1] + a[1][1]) / 2];
+      const m0 = [(s0[0][0] + s0[1][0]) / 2, (s0[0][1] + s0[1][1]) / 2];
+      const k = Math.max(0.2, Math.min(2.5, start.T.k * d(a[0], a[1]) / d(s0[0], s0[1])));
+      T.k = k; T.x = m[0] - (m0[0] - start.T.x) * (k / start.T.k); T.y = m[1] - (m0[1] - start.T.y) * (k / start.T.k); apply(); } });
+  const end = e => { if (!pts.has(e.pointerId)) return; pts.delete(e.pointerId);
+    if (!moved && pts.size === 0) { const el = document.elementFromPoint(e.clientX, e.clientY), g = el?.closest('.mn'); if (g) { if (el.closest('.mb')) render(g.dataset.id, g.dataset.id); else select(g.dataset.id); } }
+    start = { T: { ...T }, pts: new Map([...pts].map(([k, v]) => [k, [...v]])) }; };
+  svg.addEventListener('pointerup', end); svg.addEventListener('pointercancel', end);
+  svg.addEventListener('wheel', e => { e.preventDefault(); const [x, y] = rel(e); zoomAt(T.k * (e.deltaY < 0 ? 1.15 : 1 / 1.15), x, y); }, { passive: false });
+  box.querySelector('#zIn').onclick = () => zoomAt(T.k * 1.3, box.clientWidth / 2, box.clientHeight / 2);
+  box.querySelector('#zOut').onclick = () => zoomAt(T.k / 1.3, box.clientWidth / 2, box.clientHeight / 2);
+  box.querySelector('#zFit').onclick = () => { const W = box.clientWidth, H = box.clientHeight, top = nodes[root];
+    const totalH = Math.max(...Object.values(nodes).map(n => n.y)) + BH + 34;
+    T.k = Math.max(0.15, Math.min(1, (W - 24) / top.span, (H - 24) / totalH)); T.x = (W - top.span * T.k) / 2; T.y = 16; apply(); };
+  box.querySelector('#zUp').onclick = () => { const f = P[root] && P[root].f; if (f && P[f]) render(f, root); else toast('یہ سب سے اوپر ہے'); };
+  api.render = render; return api;
 }
 
 function picker(id, initial, lab) {
@@ -603,6 +792,58 @@ function viewPusht() {
   window.scrollTo({ top: 0 });
 }
 
+/* ---------- admin (hidden page: #admin) ---------- */
+async function adminCall(body) {
+  const r = await fetch(CONFIG.backend, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(body) });
+  return r.json();
+}
+function waNum(c) { let d = String(c).replace(/\D/g, ''); if (d.startsWith('00')) d = d.slice(2); if (d.startsWith('0')) d = '92' + d.slice(1); return d; }
+async function viewAdmin() {
+  setNav('');
+  const key = store('shajra.adminKey');
+  if (!key) {
+    app.innerHTML = `<section class="card"><h2>منتظمین</h2><p class="hint">یہ صفحہ صرف شجرہ کے منتظمین کے لیے ہے۔ اپنی خفیہ چابی (admin key) لکھیں؛ یہ اسی فون میں محفوظ رہے گی۔</p>
+      <form class="form" id="akf"><div class="field"><label for="ak">خفیہ چابی</label><input id="ak" dir="ltr" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+      <button class="btn primary" type="submit" style="justify-self:start">داخل ہوں</button></form><div id="akOut"></div></section>`;
+    document.getElementById('akf').onsubmit = async e => { e.preventDefault(); const k = document.getElementById('ak').value.trim(); if (!k) return;
+      const o = document.getElementById('akOut'); o.innerHTML = '<p class="hint">جانچ ہو رہی ہے…</p>';
+      try { const j = await adminCall({ action: 'ping', key: k }); if (j.ok) { store('shajra.adminKey', k); viewAdmin(); } else o.innerHTML = '<p class="note warn">چابی درست نہیں۔</p>'; }
+      catch (err) { o.innerHTML = '<p class="note warn">رابطہ نہیں ہو سکا۔ انٹرنیٹ چیک کریں۔</p>'; } };
+    return;
+  }
+  app.innerHTML = `<section class="card"><h2>منتظمین: نئی تجاویز</h2><div class="actions"><button class="btn" type="button" id="aRef">تازہ کریں</button><button class="btn" type="button" id="aOut">اس فون سے خارج کریں</button></div><div id="aList"><p class="hint">لوڈ ہو رہا ہے…</p></div></section>`;
+  document.getElementById('aRef').onclick = viewAdmin;
+  document.getElementById('aOut').onclick = () => { try { localStorage.removeItem('shajra.adminKey'); } catch (e) {} viewAdmin(); };
+  const box = document.getElementById('aList');
+  let j; try { const r = await fetch(`${CONFIG.backend}?action=pending&key=${encodeURIComponent(key)}`); j = await r.json(); } catch (e) { box.innerHTML = '<p class="note warn">رابطہ نہیں ہو سکا۔ انٹرنیٹ چیک کر کے «تازہ کریں» دبائیں۔</p>'; return; }
+  if (!j.ok) { if (j.error === 'key') { try { localStorage.removeItem('shajra.adminKey'); } catch (e) {} return viewAdmin(); } box.innerHTML = `<p class="note warn">خرابی: ${esc(j.error)}</p>`; return; }
+  const groups = []; const gk = {};
+  j.pending.forEach(r => { const k = r.t + '|' + r.from; if (!gk[k]) { gk[k] = { ...r, rows: [] }; groups.push(gk[k]); } gk[k].rows.push(r); });
+  groups.reverse();
+  const kindTxt = { add: 'بیٹوں کا اضافہ', fix: 'نام کی اصلاح', other: 'دیگر' };
+  box.innerHTML = `<div class="stats" style="margin:6px 0 10px"><div class="stat"><b>${U(j.pending.length)}</b><span>منتظر</span></div><div class="stat"><b>${U(j.approved)}</b><span>منظور شدہ</span></div><div class="stat"><b>${U(j.rejected)}</b><span>مسترد</span></div></div>` +
+    (groups.length ? groups.map((g, gi) => { const tp = P[g.target];
+      return `<article class="sub" data-g="${gi}"><div class="subh"><span class="chip gold">${kindTxt[g.type] || g.type}</span><small dir="ltr">${new Date(Number(g.t) || g.t).toLocaleString('en-GB', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}</small></div>
+        ${g.target ? `<div class="subt">${g.type === 'add' ? 'والد' : 'فرد'}: ${tp ? `<a href="#${tp.id}">${esc(tp.n)}</a> <small>(${esc(chainText(tp, 3))})</small>` : esc(g.targetName)}</div>` : ''}
+        ${g.rows.map(r => `<div class="subr" data-row="${r.row}" data-t="${r.t}">${r.name ? `<input class="subn" value="${esc(r.name)}" aria-label="نام">` : '<span class="hint">—</span>'}${r.year ? `<span class="chip">${U(r.year)}</span>` : ''}
+          <button class="btn primary" type="button" data-act="approve">منظور</button><button class="btn" type="button" data-act="reject">مسترد</button></div>`).join('')}
+        ${g.details ? `<p class="note">${esc(g.details)}</p>` : ''}
+        <div class="subf">بھیجنے والے: <b>${esc(g.from)}</b> · <a href="tel:${esc(g.contact)}" dir="ltr">${esc(g.contact)}</a> · <a href="https://wa.me/${waNum(g.contact)}" target="_blank" rel="noopener">WhatsApp</a></div></article>`; }).join('')
+    : '<p class="note">کوئی نئی تجویز منتظر نہیں۔</p>');
+  box.onclick = async e => {
+    const b = e.target.closest('[data-act]'); if (!b) return;
+    const rowEl = b.closest('.subr'), act = b.dataset.act;
+    if (act === 'reject' && !confirm('یہ اندراج مسترد کر دیں؟')) return;
+    rowEl.querySelectorAll('button').forEach(x => x.disabled = true);
+    try {
+      const res = await adminCall({ action: 'review', key, row: Number(rowEl.dataset.row), t: rowEl.dataset.t, decision: act, name: rowEl.querySelector('.subn')?.value.trim() || '' });
+      if (!res.ok) throw new Error(res.error);
+      rowEl.innerHTML = `<span class="chip ${act === 'approve' ? '' : 'warn'}">${act === 'approve' ? '✓ منظور ہو گیا' : 'مسترد'}</span> ${esc(rowEl.querySelector?.('.subn')?.value || '')}`;
+      toast(act === 'approve' ? 'منظور ہو گیا؛ ویب سائٹ پر نظر آنے لگے گا' : 'مسترد کر دیا');
+    } catch (err) { rowEl.querySelectorAll('button').forEach(x => x.disabled = false); toast(err.message === 'changed' ? 'شیٹ بدل گئی ہے، «تازہ کریں» دبائیں' : 'نہیں ہو سکا، دوبارہ کوشش کریں'); }
+  };
+}
+
 /* ---------- router ---------- */
 function route() {
   const h = location.hash.slice(1);
@@ -610,6 +851,7 @@ function route() {
   if (h === 'relation') return viewRelation();
   if (h === 'suggest') return viewSuggest();
   if (h === 'pusht') return viewPusht();
+  if (h === 'admin') return viewAdmin();
   if (h && (P[h])) return viewPerson(h);
   if (h.startsWith('tree-') && P[h.slice(5)]) return viewTree(h.slice(5));
   viewHome();
